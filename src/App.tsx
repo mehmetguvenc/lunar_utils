@@ -1,24 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import useResize from './hooks/useResize';
 
 function App() {
+  const { isMobile, screen } = useResize();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {
+        screen.orientation > 1 ? 'Wide' : 'Portrait'
+      }
+      {isMobile ? <h5>{screen.width}</h5> : <h1>{screen.width}</h1>}
     </div>
   );
 }
